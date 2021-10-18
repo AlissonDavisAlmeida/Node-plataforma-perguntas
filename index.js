@@ -22,7 +22,7 @@ app.use(express.static("public"));
 
 app.get("/", (req, resp) => {
 
-    tblPergunta.findAll({raw: true}).then(pergunta=>{
+    tblPergunta.findAll({raw: true, order:[["id","desc"]]}).then(pergunta=>{
         resp.render("index", {
             pergunta : pergunta
         });
@@ -51,6 +51,21 @@ app.post("/salvarPerguntas", (req, resp) => {
     /* resp.render(); */
 })
 
+app.get("/pergunta/:id", (req, resp) =>{
+    let id = req.params.id;
+
+    tblPergunta.findOne({
+        where:{id:id}
+    }).then(pergunta=>{
+        if (pergunta != undefined) {
+            resp.render("pergunta", {
+                pergunta : pergunta
+            })
+        } else {
+            resp.redirect("/")
+        }
+    });
+})
 
 
 
