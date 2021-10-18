@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include ('partials/header.ejs') %>
+
+    <body>
+        <%- include ('partials/navbar.ejs') %>
+            <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+                                           background-color: rgba(12, 12, 240, 0.226);">
+                <a type="button" href="/perguntas" class="btn btn-primary" style="width: 25vh; margin-top: 10px;">Perguntar</a>
+               
+
+                    <% for( let index=0; index < pergunta.length; index++ ) { %>
+
+                        <div class="card" style="width: 100vh;">
+                            <div class="card-body">
+                                <%= pergunta[index].titulo%> 
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary">Responder</button>
+                            </div>
+                        </div>
+                     
+
+                        <% } %>
+              
+                
+            </div>
+
+
+
+    </body>
+    <%- include ('partials/footer.ejs') %>
+
+</html>
